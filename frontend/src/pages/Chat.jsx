@@ -117,7 +117,7 @@ export default function Chat() {
     setMessageCount(prev => prev + 1)
  // Track session on first message only
     if (messages.length === 0) {
-      fetch("http://localhost:5000/api/chat/session", { method: "POST" }).catch(() => {})
+      fetch("https://maisha-mosaic-backend.onrender.com/api/chat/session", { method: "POST" }).catch(() => {})
     }
     try {
       const apiMessages = newMessages.map(m => ({
@@ -128,7 +128,7 @@ export default function Chat() {
       const systemWithSymptoms = SYSTEM_PROMPT +
         (symptoms ? "\n\nThe user has selected these symptoms: " + symptoms.split(",").join(", ") + ". Keep this context in mind throughout the conversation." : "")
 
-      const res = await fetch("http://localhost:5000/api/chat", {
+      const res = await fetch("https://maisha-mosaic-backend.onrender.com/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

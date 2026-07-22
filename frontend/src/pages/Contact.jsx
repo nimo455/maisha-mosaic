@@ -16,7 +16,7 @@ export default function Contact() {
   e.preventDefault()
   setLoading(true)
   try {
-    const res = await fetch("http://localhost:5000/api/contact", {
+    const res = await fetch("https://maisha-mosaic-backend.onrender.com/api/contact", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),

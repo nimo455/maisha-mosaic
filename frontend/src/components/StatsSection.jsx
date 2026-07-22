@@ -9,7 +9,7 @@ function StatsSection() {
   })
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/stats")
+    fetch("https://maisha-mosaic-backend.onrender.com/api/stats")
       .then(res => res.json())
       .then(data => setStats(data))
       .catch(() => {})

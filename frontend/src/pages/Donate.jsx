@@ -17,7 +17,7 @@ import Footer from "../components/Footer"
   e.preventDefault()
   setMpesaLoading(true)
   try {
-    const res = await fetch("http://localhost:5000/api/donate/mpesa", {
+    const res = await fetch("https://maisha-mosaic-backend.onrender.com/api/donate/mpesa", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(mpesa),
@@ -39,7 +39,7 @@ import Footer from "../components/Footer"
   e.preventDefault()
   setBankLoading(true)
   try {
-    const res = await fetch("http://localhost:5000/api/donate/bank", {
+    const res = await fetch("https://maisha-mosaic-backend.onrender.com/api/donate/bank", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(bank),
