@@ -1,0 +1,27 @@
+# Vite
+.vite/
+dist/
+node_modules/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Backend (if in same repo)
+backend/venv/
+backend/__pycache__/
+backend/instance/
+*.pyc.env
+backend/.env
