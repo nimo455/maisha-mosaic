@@ -10,7 +10,7 @@ export default function Footer() {
           
           {/* About Section */}
           <div>
-            <h3 className="text-lg font-extrabold mb-3">Maisha Mosaic Foundation</h3>
+            <h3 className="text-lg font-extrabold mb-2">Maisha Mosaic Foundation</h3>
             <p className="text-gray-300 text-sm leading-relaxed">
               Transforming mental health care in Garissa, Kenya through education, 
               outreach, and compassionate support.
@@ -49,8 +49,8 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-bold text-base mb-3">Quick Links</h4>
-            <ul className="space-y-2">
+            <h4 className="font-bold text-base mb-2">Quick Links</h4>
+            <ul className="space-y-1">
               <li>
                 <Link to="/" className="text-gray-300 hover:text-white transition-colors text-sm">Home</Link>
               </li>
@@ -71,7 +71,7 @@ export default function Footer() {
 
           {/* Our Services */}
           <div>
-            <h4 className="font-bold text-lg mb-4">Our Services</h4>
+            <h4 className="font-bold text-lg mb-3">Our Services</h4>
             <ul className="space-y-3">
               <li>
                 <Link to="/counselling" className="text-gray-300 hover:text-white transition-colors text-sm">Counselling</Link>
@@ -90,7 +90,7 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h4 className="font-bold text-lg mb-4">Get in Touch</h4>
+            <h4 className="font-bold text-lg mb-3">Get in Touch</h4>
             <ul className="space-y-3 text-sm">
               <li className="text-gray-300 flex items-start gap-3">
                 <span className="text-blue-400 shrink-0">📍</span>

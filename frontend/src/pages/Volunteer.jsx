@@ -1,157 +1,134 @@
-import heroImage from "../assets/volunteer.jpg"
 import { Link } from "react-router-dom"
+import { ArrowRight, Users, Heart, Clock, MapPin, CheckCircle, Mail, Phone } from "lucide-react"
 import Footer from "../components/Footer"
-
 
 export default function Volunteer() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="bg-white">
+
       {/* Hero */}
-      <div className="relative">
-        <img src={heroImage} alt="Volunteer" className="w-full h-[320px]" />
-       
-        <div className="absolute inset-0 flex flex-col justify-end px-16 pb-32">
-          <span className="text-black-200 text-sm font-bold tracking-[0.2em] uppercase mb-3">Get Involved</span>
-          <h1 className="text-5xl font-extrabold text-black">Volunteer With Us</h1>
+      <div className="bg-blue-800 py-16">
+        <div className="max-w-6xl mx-auto px-6">
+          <p className="text-blue-200 text-xs font-semibold tracking-widest uppercase mb-3">Get Involved</p>
+          <h1 className="text-4xl font-bold text-white mb-3">Volunteer With Us</h1>
+          <div className="w-12 h-0.5 bg-blue-400 mb-5" />
+          <p className="text-blue-100 text-sm max-w-xl leading-relaxed">
+            Join our team of dedicated volunteers and help us bring mental health support, awareness, and hope to communities across Garissa, Kenya.
+          </p>
         </div>
       </div>
 
-      <div className="max-w-[1200px] mx-auto px-10 py-16">
+      {/* Why Volunteer */}
+      <div className="py-14 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-2xl font-bold text-gray-800 mb-1">WHY VOLUNTEER WITH US</h2>
+          <div className="w-full h-px bg-blue-700 mb-1" />
+          <div className="w-16 h-0.5 bg-blue-700 mb-10" />
 
-        {/* Intro */}
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <span className="text-blue-700 text-sm font-bold tracking-[0.2em] uppercase">Make a Difference</span>
-          <h2 className="text-3xl font-extrabold text-gray-900 mt-2 mb-6">Join Our Team of Volunteers</h2>
-          <p className="text-gray-600 text-lg leading-relaxed">
-            At Maisha Mosaic Foundation, volunteers are the heartbeat of our work. 
-            Whether you have professional skills or simply a passion for helping others, 
-            there's a place for you in our community.
-          </p>
-        </div>
-
-        {/* Two-Column Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-
-          {/* Left Column - Why Volunteer */}
-          <div>
-            <h3 className="text-2xl font-extrabold text-gray-900 mb-8">Why Volunteer With Us?</h3>
-            <div className="space-y-6">
-              {[
-                { 
-                  icon: "🤝", 
-                  title: "Make a Tangible Impact", 
-                  desc: "Your time and skills directly benefit individuals and families in need of mental health support in Garissa." 
-                },
-                { 
-                  icon: "📚", 
-                  title: "Gain Valuable Experience", 
-                  desc: "Develop new skills, gain hands-on experience in mental health and community development, and build your CV." 
-                },
-                { 
-                  icon: "🌍", 
-                  title: "Join a Supportive Community", 
-                  desc: "Connect with like-minded individuals who share your passion for mental health advocacy and community service." 
-                },
-                { 
-                  icon: "💙", 
-                  title: "Be Part of the Solution", 
-                  desc: "Help break the stigma around mental health in your community and be part of creating lasting change." 
-                },
-              ].map((item) => (
-                <div key={item.title} className="flex items-start gap-5 pb-6 border-b border-gray-100 last:border-0 last:pb-0">
-                  <span className="text-3xl shrink-0">{item.icon}</span>
-                  <div>
-                    <h4 className="font-bold text-gray-900 text-lg mb-1">{item.title}</h4>
-                    <p className="text-gray-600 leading-relaxed">{item.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Right Column - Volunteer Roles */}
-          <div>
-            <h3 className="text-2xl font-extrabold text-gray-900 mb-8">Volunteer Opportunities</h3>
-            <div className="space-y-6">
-              {[
-                { 
-                  icon: "👨‍🏫", 
-                  title: "Community Health Worker", 
-                  desc: "Visit schools, mosques, and community centers to conduct mental health awareness sessions and screenings." 
-                },
-                { 
-                  icon: "📞", 
-                  title: "Helpline Support", 
-                  desc: "Provide compassionate listening and basic mental health support to callers on our helpline." 
-                },
-                { 
-                  icon: "📢", 
-                  title: "Awareness Campaigner", 
-                  desc: "Help organize and run community events, workshops, and awareness campaigns across Garissa County." 
-                },
-                { 
-                  icon: "✍️", 
-                  title: "Administrative & Communications", 
-                  desc: "Support our team with social media, content creation, data entry, and day-to-day operations." 
-                },
-              ].map((role) => (
-                <div key={role.title} className="flex items-start gap-5 pb-6 border-b border-gray-100 last:border-0 last:pb-0">
-                  <span className="text-3xl shrink-0">{role.icon}</span>
-                  <div>
-                    <h4 className="font-bold text-gray-900 text-lg mb-1">{role.title}</h4>
-                    <p className="text-gray-600 leading-relaxed">{role.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-        </div>
-
-        {/* Requirements - Two Column */}
-        <div className="bg-blue-50 border border-blue-100 rounded-2xl p-8 my-16">
-          <h3 className="text-xl font-extrabold text-gray-900 text-center mb-6">Who Can Volunteer?</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-6">
             {[
-              "No prior experience required — we provide training",
-              "Must be 18 years or older (or 16+ with parental consent)",
-              "Committed to our mission and values",
-              "Able to dedicate at least 5 hours per week",
-              "Passionate about mental health advocacy",
-              "Good communication and interpersonal skills",
-            ].map((item) => (
-              <div key={item} className="flex items-center gap-3 text-gray-700 text-sm">
-                <span className="text-blue-700 font-bold shrink-0">✓</span> {item}
+              { icon: Heart, title: "Make a Real Impact", desc: "Your time and skills directly help individuals struggling with mental health challenges in Garissa County." },
+              { icon: Users, title: "Join a Dedicated Team", desc: "Work alongside passionate mental health advocates, professionals, and community members who care deeply about change." },
+              { icon: Clock, title: "Flexible Commitment", desc: "We offer flexible volunteering options that fit your schedule — from a few hours a week to full-time engagement." },
+            ].map((item) => {
+              const Icon = item.icon
+              return (
+                <div key={item.title} className="border border-gray-200 rounded p-6 hover:border-blue-200 hover:shadow-sm transition-all">
+                  <div className="w-10 h-10 bg-blue-700 rounded flex items-center justify-center text-white mb-4">
+                    <Icon size={18} strokeWidth={1.5} />
+                  </div>
+                  <h3 className="font-semibold text-gray-900 text-sm mb-2">{item.title}</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      </div>
+
+      {/* Volunteer Roles */}
+      <div className="py-14 bg-gray-50 border-t border-gray-200">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-2xl font-bold text-gray-800 mb-1">VOLUNTEER ROLES</h2>
+          <div className="w-full h-px bg-blue-700 mb-1" />
+          <div className="w-16 h-0.5 bg-blue-700 mb-10" />
+
+          <div className="grid md:grid-cols-2 gap-5">
+            {[
+              {
+                title: "Community Outreach Volunteer",
+                desc: "Visit schools, mosques, churches, and community gatherings to spread mental health awareness and distribute educational materials.",
+                requirements: ["Good communication skills", "Passion for community work", "Available on weekends"],
+              },
+              {
+                title: "Group Therapy Support Volunteer",
+                desc: "Assist our therapists during group therapy sessions by helping participants feel welcome, comfortable, and supported.",
+                requirements: ["Empathetic and non-judgmental", "Ability to maintain confidentiality", "Consistent availability"],
+              },
+              {
+                title: "Administrative & Events Volunteer",
+                desc: "Help organise events, manage records, handle communications, and support the day-to-day running of the foundation.",
+                requirements: ["Organised and detail-oriented", "Basic computer skills", "Reliable and punctual"],
+              },
+              {
+                title: "Social Media & Awareness Volunteer",
+                desc: "Help us spread our message online by creating content, managing social media pages, and raising awareness about mental health.",
+                requirements: ["Social media knowledge", "Creative mindset", "Good writing skills"],
+              },
+            ].map((role) => (
+              <div key={role.title} className="bg-white border border-gray-200 rounded p-6 hover:border-blue-200 transition-all">
+                <h3 className="font-bold text-gray-900 text-sm mb-2">{role.title}</h3>
+                <p className="text-gray-500 text-sm leading-relaxed mb-4">{role.desc}</p>
+                <ul className="space-y-1.5">
+                  {role.requirements.map((r) => (
+                    <li key={r} className="flex items-start gap-2 text-xs text-gray-500">
+                      <CheckCircle size={12} className="text-blue-700 shrink-0 mt-0.5" />
+                      {r}
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
         </div>
+      </div>
 
-        {/* CTA - No Card */}
-        <div className="text-center py-12">
-          <h2 className="text-3xl font-extrabold text-gray-900 mb-4">Ready to Make a Difference?</h2>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
-            Join our team of dedicated volunteers and help us bring mental health support 
-            to every corner of Garissa County.
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Link 
-              to="/contact" 
-              className="bg-blue-700 text-white font-bold px-10 py-4 rounded-full no-underline hover:bg-blue-800 transition-all shadow-lg hover:shadow-xl"
-            >
-              Apply Now
-            </Link>
-            <Link 
-              to="/contact" 
-              className="border-2 border-blue-700 text-blue-700 font-bold px-10 py-4 rounded-full no-underline hover:bg-blue-700 hover:text-white transition-all"
-            >
-              Learn More
-            </Link>
+      {/* How to Apply */}
+      <div className="py-14 bg-white border-t border-gray-200">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-2xl font-bold text-gray-800 mb-1">HOW TO APPLY</h2>
+          <div className="w-full h-px bg-blue-700 mb-1" />
+          <div className="w-16 h-0.5 bg-blue-700 mb-10" />
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { step: "01", title: "Contact Us", desc: "Reach out via email or phone to express your interest in volunteering with Maisha Mosaic Foundation." },
+              { step: "02", title: "Brief Interview", desc: "We'll have a short conversation to understand your skills, interests, and availability to find the best role for you." },
+              { step: "03", title: "Get Started", desc: "Once confirmed, you'll receive an orientation and be matched with a role where you can make the most impact." },
+            ].map((s) => (
+              <div key={s.step} className="flex gap-4">
+                <div className="text-3xl font-bold text-blue-100 shrink-0 w-10">{s.step}</div>
+                <div>
+                  <h3 className="font-bold text-gray-900 text-sm mb-2">{s.title}</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed">{s.desc}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-
       </div>
-        <Footer />
+
+      {/* CTA */}
+      <div className="py-14 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-6 text-center ">
+          <h2 className="text-2xl font-bold text-black mb-3">Ready to Make a Difference?</h2>
+          <p className="text-black-100 text-sm max-w-lg mx-auto mb-8 leading-relaxed">
+            Contact us today and take the first step toward becoming a Maisha Mosaic volunteer. Every hand we add strengthens our mission.
+          </p>
+          </div>
+      </div>
+       
+      <Footer />
     </div>
   )
 }

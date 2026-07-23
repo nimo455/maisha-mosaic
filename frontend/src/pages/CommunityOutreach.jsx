@@ -1,98 +1,109 @@
-import heroImage from "../assets/card3.jpg"
 import { Link } from "react-router-dom"
+import { Megaphone, MapPin, Users, CheckCircle, BookOpen, ArrowRight } from "lucide-react"
 import Footer from "../components/Footer"
 
 export default function CommunityOutreach() {
   return (
-    <div className="min-h-screen bg-white">
-      <div className="relative">
-        <img src={heroImage} alt="Community Outreach" className="w-full h-[320px] object-cover" />
-        
-        <div className="absolute inset-0 flex flex-col justify-end px-16 pb-32">
-          <span className="text-black text-lg font-bold tracking-[0.2em] uppercase mb-3">Our Services</span>
-          <h1 className="text-5xl font-extrabold text-black">Community Outreach</h1>
+    <div className="bg-white">
+
+      {/* Hero */}
+      <div className="bg-blue-800 py-16">
+        <div className="max-w-6xl mx-auto px-6">
+          <p className="text-blue-200 text-xs font-semibold tracking-widest uppercase mb-3">Our Services</p>
+          <h1 className="text-4xl font-bold text-white mb-3">Community Outreach</h1>
+          <div className="w-12 h-0.5 bg-blue-400 mb-5" />
+          <p className="text-blue-100 text-sm max-w-xl leading-relaxed">
+            We bring mental health awareness, education, and support directly to communities, schools, and public spaces across Garissa County.
+          </p>
         </div>
       </div>
 
-      <div className="max-w-[1160px] mx-auto px-10 py-16">
+      <div className="max-w-6xl mx-auto px-6 py-12">
 
-        <div className="gap-16 items-center mb-20">
+        {/* About + What we teach */}
+        <div className="grid md:grid-cols-2 gap-12 mb-14">
           <div>
-            <span className="text-blue-700 text-sm font-bold tracking-[0.2em] uppercase">Reaching Out</span>
-            <h2 className="text-3xl font-extrabold text-gray-900 mt-2 mb-6">Taking Mental Health to the Community</h2>
-            <p className="text-gray-600 leading-relaxed mb-4">
-              At Maisha Mosaic Foundation, we believe that mental health support should come to the people — not the other way around. Our community outreach program takes our services directly into schools, mosques, churches, markets, and neighbourhoods across Garissa County.
+            <h2 className="text-2xl font-bold text-gray-800 mb-1">ABOUT THIS SERVICE</h2>
+            <div className="w-full h-px bg-blue-700 mb-1" /><div className="w-16 h-0.5 bg-blue-700 mb-6" />
+            <p className="text-gray-600 text-sm leading-relaxed mb-4">
+              At Maisha Mosaic Foundation, we believe that mental health support should come to the people — not the other way around. Our community outreach program takes our services directly into the heart of Garissa communities.
             </p>
-            <p className="text-gray-600 leading-relaxed mb-4">
+            <p className="text-gray-600 text-sm leading-relaxed mb-4">
               Through outreach, we meet people where they are — physically, emotionally, and culturally. We conduct awareness campaigns, mental health screenings, educational workshops, and connect community members with the support they need.
             </p>
-            <p className="text-gray-600 leading-relaxed">
-              Our outreach team consists of trained mental health advocates, community health workers, and volunteers who are passionate about making a difference. Together we are building a community that understands, supports, and prioritises mental wellbeing.
+            <p className="text-gray-600 text-sm leading-relaxed">
+              Our outreach team consists of trained mental health advocates, community health workers, and volunteers who are passionate about making a difference in Garissa.
             </p>
           </div>
-        </div>
 
-        {/* Impact */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
-          {[
-            { number: "50+", label: "Community Sessions Held", icon: "📚" },
-            { number: "5,000+", label: "People Reached", icon: "👥" },
-            { number: "20+", label: "Villages Covered", icon: "🏘️" },
-            { number: "100+", label: "Volunteers", icon: "🤝" },
-          ].map((s) => (
-            <div key={s.label} className="bg-blue-50 rounded-2xl p-6 text-center border border-blue-100">
-              <div className="text-3xl mb-2">{s.icon}</div>
-              <div className="text-3xl font-extrabold text-blue-700 mb-1" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{s.number}</div>
-              <p className="text-gray-500 text-xs font-medium">{s.label}</p>
-            </div>
-          ))}
+          <div>
+            <h2 className="text-2xl font-bold text-gray-800 mb-1">WHAT WE TEACH</h2>
+            <div className="w-full h-px bg-blue-700 mb-1" /><div className="w-16 h-0.5 bg-blue-700 mb-6" />
+            <ul className="space-y-3">
+              {[
+                "How to recognise signs of depression, anxiety, and trauma",
+                "Understanding mental health conditions and reducing stigma",
+                "How to support a friend or family member who is struggling",
+                "When, where, and how to seek professional help",
+                "Building emotional resilience and healthy coping skills",
+                "Breaking generational cycles of unaddressed mental health struggles",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3 text-sm text-gray-600">
+                  <CheckCircle size={14} className="text-blue-700 shrink-0 mt-0.5" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
         {/* Programs */}
-        <div className="mb-20">
-          <div className="text-center mb-12">
-            <span className="text-blue-700 text-sm font-bold tracking-[0.2em] uppercase">Programs</span>
-            <h2 className="text-3xl font-extrabold text-gray-900 mt-2">Our Outreach Programs</h2>
-          </div>
+        <div className="mb-14">
+          <h2 className="text-2xl font-bold text-gray-800 mb-1">OUR OUTREACH PROGRAMS</h2>
+          <div className="w-full h-px bg-blue-700 mb-1" /><div className="w-16 h-0.5 bg-blue-700 mb-10" />
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { icon: "🎓", title: "Community Education Program", desc: "We visit schools, colleges, and community centers to educate on mental health awareness, substance abuse prevention, stress management, and how to seek help." },
-              { icon: "👨‍👩‍👧", title: "Family Support Workshops", desc: "We engage families to help them understand and support loved ones dealing with mental health challenges and substance abuse — reducing stigma at home." },
-              { icon: "📢", title: "Public Awareness Campaigns", desc: "Through community events, radio appearances, and social media, we spread the message that mental health matters, substance abuse is preventable, and help is available." },
+              { title: "Youth Wellness Program", desc: "We reach out to young people in Garissa who feel misunderstood, judged, or lost — creating safe spaces where they can be heard, supported, and guided toward healing and a better future." },
+              { title: "Family Support Workshops", desc: "We engage families to help them understand and support loved ones dealing with mental health challenges — reducing stigma at home." },
+              { title: "Public Awareness Campaigns", desc: "Through community events and radio appearances, we spread the message that mental health matters and that free professional help is available in Garissa." },
             ].map((p) => (
-              <div key={p.title} className="bg-white border border-gray-100 rounded-2xl p-7 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all">
-                <div className="text-4xl mb-4">{p.icon}</div>
-                <h3 className="font-bold text-gray-900 text-lg mb-3">{p.title}</h3>
+              <div key={p.title} className="border border-gray-200 rounded-lg p-6 hover:border-blue-200 hover:shadow-sm transition-all">
+                <h3 className="font-semibold text-gray-900 text-sm mb-3">{p.title}</h3>
                 <p className="text-gray-500 text-sm leading-relaxed">{p.desc}</p>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Get Involved Section - No Card */}
-        <div className="text-center py-12">
-          <h2 className="text-3xl font-extrabold text-gray-900 mb-4">Get Involved in Our Outreach</h2>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
-            Whether you want to volunteer, invite us to your school or community, or support our outreach financially — 
-            we would love to hear from you.
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Link 
-              to="/contact" 
-              className="bg-blue-700 text-white font-bold px-10 py-4 rounded-full no-underline hover:bg-blue-800 transition-all shadow-lg hover:shadow-xl"
-            >
-              Partner With Us
-            </Link>
-            <Link 
-              to="/donate" 
-              className="border-2 border-blue-700 text-blue-700 font-bold px-10 py-4 rounded-full no-underline hover:bg-blue-700 hover:text-white transition-all"
-            >
-              Support Outreach
-            </Link>
-          </div>
+        {/* Impact */}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-14">
+          {[
+            { value: "5,000+", label: "People Reached" },
+            { value: "20+", label: "Villages Covered" },
+            { value: "100+", label: "Volunteers" },
+          ].map((s) => (
+            <div key={s.label} className="bg-blue-700 text-white rounded-lg p-5 text-center">
+              <p className="text-2xl font-bold">{s.value}</p>
+              <p className="text-blue-200 text-xs mt-1">{s.label}</p>
+            </div>
+          ))}
         </div>
-
       </div>
+
+      {/* CTA */}
+      <div className="py-14 bg-white">
+        <div className="max-w-6xl mx-auto px-6 text-center">
+          <h2 className="text-2xl font-bold text-black mb-3">Invite Us to Your Community</h2>
+          <p className="text-black-100 text-sm max-w-lg mx-auto mb-8 leading-relaxed">
+            Want us to visit your school, mosque, church, or community? Get in touch and we will organise a session for you — completely free.
+          </p>
+          <Link to="/contact" className="inline-flex items-center gap-2 bg-white text-blue-800 font-semibold px-6 py-3 text-sm rounded no-underline hover:bg-blue-50 transition-colors">
+            Get in Touch <ArrowRight size={15} />
+          </Link>
+        </div>
+      </div>
+
+      
       <Footer />
     </div>
   )

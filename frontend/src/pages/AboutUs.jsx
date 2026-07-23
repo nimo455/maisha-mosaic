@@ -1,111 +1,190 @@
-import React from 'react'
-import heroImage from "../assets/hero-image.jpg"
-import hero1 from "../assets/group.jpg"
-import hero2 from "../assets/community.jpg"
-import hero3 from "../assets/counseling.jpg"
+import { Link } from "react-router-dom"
+import { Users, BookOpen, Heart, Activity, Target, Eye } from "lucide-react"
+import card7 from "../assets/card7.jpg"
+import group from "../assets/group.jpg"
+import card5 from "../assets/card5.jpg"
+import card6 from "../assets/card6.jpg"
 import Footer from "../components/Footer"
 
-function AboutUs() {
+export default function AboutUs() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="bg-white">
 
-      {/* Hero */}
-      <div className="relative">
-        <img src={heroImage} alt="About Us" className="w-full h-[330px] object-cover" />
-        <div className="absolute inset-0 flex flex-col items-start justify-center px-16 text-black">
-          <h1 className="text-5xl font-extrabold mb-4 max-w-xl leading-tight">Building Stronger Communities</h1>
-          <p className="text-gray-900 max-w-md mb-8 text-lg">
-            Dedicated to improving lives through sustainable initiatives in mental health, education, and community development across Kenya.
-          </p>
+      {/* Section 1 — OVERVIEW with light blue bg + 3 cards like NCK */}
+      <div className="bg-blue-800 py-16 text-center">
+        <h1 className="text-5xl font-extrabold text-white mb-3 tracking-wide">ABOUT US</h1>
+        <div className="flex items-center justify-center gap-2 mb-10">
+          <div className="h-px w-16 bg-white/50" />
+          <div className="w-2 h-2 rounded-full bg-white" />
+          <div className="h-px w-16 bg-white/50" />
+        </div>
+
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                icon: Users,
+                title: "Who We Are",
+                desc: "Maisha Mosaic Foundation is a community-driven non-profit organisation rooted in Garissa, Kenya. We were born from a simple but powerful observation — that too many young people were being misunderstood, judged, and left behind.",
+              },
+              {
+                icon: Target,
+                title: "Our Mission",
+                desc: "To walk alongside individuals on their journey toward healing, self-discovery, and empowerment — providing the guidance, support, and resources they need to reclaim their lives and reach their full potential.",
+              },
+              {
+                icon: Eye,
+                title: "Our Vision",
+                desc: "A society where people are not defined by their struggles or past mistakes, but by their strength, resilience, and ability to grow — where every individual feels seen, heard, valued, and empowered.",
+              },
+            ].map((card) => {
+              const Icon = card.icon
+              return (
+                <div key={card.title} className="bg-white border border-gray-200 rounded-lg p-8 text-left shadow-sm hover:shadow-md transition-shadow">
+                  <div className="flex justify-center mb-5">
+                    <Icon size={40} className="text-blue-700" strokeWidth={1.2} />
+                  </div>
+                  <h3 className="text-blue-700 font-bold text-lg text-center mb-3">{card.title}</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed text-center">{card.desc}</p>
+                </div>
+              )
+            })}
+          </div>
         </div>
       </div>
 
-      {/* Main Section */}
-      <div className="bg-gray-50 py-16">
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
+      {/* Section 2 — Why Maisha Mosaic? — Blue panel left + images right like NCK */}
+      <div className="py-0">
+        <div className="max-w-6xl mx-auto px-6 py-14">
+          <h2 className="text-3xl font-bold text-blue-900 text-center mb-2">Why Maisha Mosaic Foundation?</h2>
+          <div className="flex justify-center mb-10">
+            <div className="h-0.5 w-12 bg-blue-700" />
+          </div>
+        </div>
 
-          {/* LEFT — Images */}
-          <div className="relative h-[620px]">
-            <img src={hero2} alt="Group" className="w-full h-[500px] object-cover rounded-tr-[300px]" />
-            <div className="absolute bottom-[0px] left-8 bg-blue-900 text-white p-6 py-5 px-20 object-cover">
-              <p className="text-7lg font-black leading-tight">UNDERSTAND.</p>
-              <p className="text-lg font-black leading-tight">EMPOWER.</p>
-              <p className="text-yellow-400 text-lg font-bold italic mt-1" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                Transform Lives ♡
-              </p>
-            </div>
-            <img src={hero1} alt="" className="absolute right-0 bottom-[-0px] w-80 h-80 rounded-full border-5 border-white" />
-            <img src={hero3} alt="" className="absolute left-80 -bottom-50 w-62 h-62 object-cover rounded-full border-8 border-white shadow-xl" />
+        <div className="flex flex-col md:flex-row">
+          {/* Blue panel */}
+          <div className="md:w-1/2 bg-blue-500 p-10 text-white flex flex-col justify-center">
+            <h3 className="text-2xl font-bold mb-6">Our Story at a Glance</h3>
+            <p className="text-blue-50 text-sm leading-relaxed mb-4">
+              We were born from a simple but powerful observation — that too many young people in Garissa were being misunderstood, judged, and left behind. Instead of asking why they were struggling, society was pushing them further away.
+            </p>
+            <p className="text-blue-50 text-sm leading-relaxed mb-4">
+              We created Maisha Mosaic to change that — to create a space where the youth are heard without judgment, where the gap between them and their communities is bridged with understanding.
+            </p>
+            <p className="text-blue-50 text-sm leading-relaxed mb-4">
+              Through awareness, counseling, mentorship, advocacy, and community support, we work to break down stigmatization and stereotypes, encourage self-confidence, and inspire hope in those who may feel forgotten or alone.
+            </p>
+            <p className="text-blue-50 text-sm leading-relaxed">
+              At Maisha Mosaic Foundation, we are committed to helping individuals transform pain into purpose, challenges into opportunities, and obstacles into stepping stones toward a healthier, stronger, and more meaningful life.
+            </p>
           </div>
 
-          {/* RIGHT — Content */}
-          <div>
-            <h2 className="text-3xl font-extrabold text-blue-900 mb-2">About Us</h2>
-            <div className="flex items-center gap-1 mb-6">
-              <div className="h-1 w-10 bg-yellow-400 rounded-full" />
-              <div className="h-1 w-3 bg-yellow-400 rounded-full" />
-            </div>
-
-            <p className="text-gray-700 text-base leading-relaxed mb-5">
-              <strong className="text-blue-900">Maisha Mosaic Foundation</strong> is a community-driven non-profit organisation rooted in Garissa, Kenya. We were born from a simple but powerful observation — that too many young people in our community were being misunderstood, judged, and left behind. Instead of asking why they were struggling, society was pushing them further away. We created Maisha Mosaic to change that — to create a space where the youth are heard without judgment, where the gap between them and their communities is bridged with understanding, and where every young person has the support they need to heal and rebuild their life.
-            </p>
-
-            <p className="text-gray-700 text-base leading-relaxed mb-5">
-              <strong className="text-blue-900">Our Mission</strong> is to walk alongside individuals on their journey toward healing, self-discovery, and empowerment, providing the guidance, support, and resources they need to reclaim their lives and reach their full potential.
-            </p>
-
-            <p className="text-gray-700 text-base leading-relaxed mb-5">
-              <strong className="text-blue-900">Our Vision</strong> is to create a society where people are not defined by their struggles, circumstances, or past mistakes, but by their strength, resilience, and ability to grow. Through awareness, counseling, mentorship, advocacy, and community support, we work to break down stigmatization and stereotypes, encourage self-confidence and self-advocacy, and inspire hope in those who may feel forgotten or alone.
-            </p>
-
-            <p className="text-gray-700 text-base leading-relaxed mb-5">
-              <strong className="text-blue-900">Our Mental Health Education Programs</strong> teach communities how to recognize signs of depression, anxiety and trauma, reduce stigma, support loved ones struggling with mental health, and know when and where to seek help.
-            </p>
-
-            <p className="text-gray-700 text-base leading-relaxed mb-5">
-              <strong className="text-blue-900">Our Commitment</strong> is to help individuals transform pain into purpose, challenges into opportunities, and obstacles into stepping stones toward a healthier, stronger, and more meaningful life.
-            </p>
-
-            {/* Encouraging words */}
-            <div className="bg-blue-50 border border-blue-100 rounded-2xl p-6 mt-4">
-              <p className="text-blue-900 text-base font-semibold leading-relaxed italic">
-                "You are not your struggles. You are not your past. You are not what others say about you. You are capable of healing, growing, and becoming everything you were meant to be — and we are here to walk that journey with you. 💙"
-              </p>
-              <p className="text-blue-400 text-xs font-bold mt-3 uppercase tracking-wider">— Maisha Mosaic Foundation</p>
-            </div>
+          {/* Image grid */}
+          <div className="md:w-1/2 grid grid-cols-2">
+            <img src={card7} alt="Community" className="w-full h-56 object-cover" />
+            <img src={group} alt="Counseling" className="w-full h-56 object-cover" />
+            <img src={card5} alt="Group" className="w-full h-56 object-cover" />
+            <img src={card6} alt="Volunteer" className="w-full h-56 object-cover" />
           </div>
-
         </div>
       </div>
 
-      {/* Values */}
-      <div className="max-w-[1160px] mx-auto px-10 py-16">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          {[
-            { icon: "💚", title: "UNDERSTAND", desc: "We listen, we learn, and we see beyond the surface.", bg: "bg-green-50", color: "text-green-700" },
-            { icon: "🤝", title: "SUPPORT", desc: "We provide care, resources, and guidance to every individual.", bg: "bg-blue-50", color: "text-blue-700" },
-            { icon: "⭐", title: "EMPOWER", desc: "We equip people with skills, confidence, and self-belief.", bg: "bg-yellow-50", color: "text-yellow-700" },
-            { icon: "🔮", title: "TRANSFORM", desc: "We believe in second chances, new beginnings, and brighter futures.", bg: "bg-purple-50", color: "text-purple-700" },
-          ].map((v) => (
-            <div key={v.title} className={`${v.bg} rounded-2xl p-6 text-center`}>
-              <div className="text-3xl mb-3">{v.icon}</div>
-              <h3 className={`font-extrabold text-xs tracking-widest uppercase mb-2 ${v.color}`}>{v.title}</h3>
-              <p className="text-gray-500 text-xs leading-relaxed">{v.desc}</p>
+      {/* Section 3 — OUR FUNCTIONS like NCK grid */}
+      <div className="py-14 bg-white border-t border-gray-100">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-4xl font-extrabold text-blue-900 text-center mb-2 tracking-wide">OUR FUNCTIONS</h2>
+          <div className="flex items-center justify-center gap-2 mb-10">
+            <div className="h-px w-16 bg-blue-700" />
+            <div className="w-2 h-2 rounded-full bg-blue-400" />
+            <div className="h-px w-16 bg-blue-700" />
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 border border-blue-200">
+            {[
+              { icon: BookOpen, desc: "To deliver mental health education programs that empower individuals to understand their emotions and take meaningful steps toward healing." },
+              { icon: Heart, desc: "To promote mental wellness by providing access to professional psychiatric care, counseling, and therapeutic support for all community members." },
+              { icon: Users, desc: "To build resilient communities by working alongside local leaders, volunteers, and partner organisations across Garissa County." },
+              { icon: Activity, desc: "To conduct community outreach, bringing mental health awareness and support directly into schools, mosques, churches, and public spaces." },
+              { icon: Target, desc: "To break the stigma around mental health by providing coaching, workshops, and education that challenge harmful beliefs and stereotypes." },
+              { icon: Eye, desc: "To create safe, supportive environments where every individual — especially the youth — feels valued, heard, and empowered to grow." },
+              { icon: BookOpen, desc: "To train and support community mental health advocates, volunteers, and professionals who can extend our reach across Garissa." },
+              { icon: Heart, desc: "To mobilise resources and partnerships that enable us to provide free or subsidised mental health care to those who need it most." },
+            ].map((item, i) => {
+              const Icon = item.icon
+              return (
+                <div key={i} className="border border-blue-200 p-6 text-center hover:bg-blue-50 transition-colors">
+                  <div className="flex justify-center mb-4">
+                    <Icon size={36} className="text-blue-700" strokeWidth={1.2} />
+                  </div>
+                  <p className="text-gray-600 text-xs leading-relaxed">{item.desc}</p>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      </div>
+
+      {/* Section 4 — OUR CORE VALUES — light blue bg + images in center like NCK */}
+      <div className="py-14 bg-blue-50 border-t border-gray-100">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-10">
+            <h2 className="text-4xl font-extrabold text-blue-900 tracking-wide">OUR CORE VALUES</h2>
+            <p className="text-gray-500 text-sm mt-2">That Make Us Who We Are</p>
+            <div className="flex justify-center mt-3">
+              <div className="h-0.5 w-12 bg-blue-700" />
             </div>
-          ))}
-        </div>
+          </div>
 
-        {/* Bottom banner */}
-        <div className="mt-10 bg-blue-900 rounded-2xl px-10 py-8 text-center">
-          <p className="text-white text-lg font-semibold leading-relaxed max-w-3xl mx-auto">
-           "Every journey to healing begins with a single step. You have already taken that step by being here — and we are proud of you for it. 💙"
-          </p>
-        </div>
-      </div><br />
+          <div className="grid md:grid-cols-3 gap-0 items-start">
+            {/* Left values */}
+            <div className="space-y-8 pr-6">
+              {[
+                { title: "COMPASSION", desc: "We approach every individual with genuine empathy, kindness, and a deep commitment to their wellbeing and healing journey." },
+                { title: "INTEGRITY", desc: "We operate with honesty, transparency, and accountability in everything we do — building trust within our community." },
+                { title: "RESPECT", desc: "We honour the dignity, culture, and lived experience of every person we serve, without judgment or discrimination." },
+                { title: "INCLUSIVITY", desc: "We welcome everyone regardless of their background, gender, religion, or circumstances into our safe spaces." },
+              ].map((v, i) => (
+                <div key={v.title} className="flex items-start gap-3">
+                  <div className="w-2 h-2 rounded-full bg-blue-700 shrink-0 mt-1.5" />
+                  <div className="border-b border-gray-200 pb-4 flex-1">
+                    <h3 className="font-extrabold text-blue-900 text-sm mb-1">{v.title}</h3>
+                    <p className="text-gray-500 text-xs leading-relaxed">{v.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
 
+            {/* Center images */}
+            <div className="grid grid-cols-2 gap-2 px-2">
+              <img src={card7} alt="" className="w-full h-40 object-cover rounded" />
+              <img src={group} alt="" className="w-full h-40 object-cover rounded" />
+              <img src={card5} alt="" className="w-full h-40 object-cover rounded col-span-2" />
+            </div>
+
+            {/* Right values */}
+            <div className="space-y-8 pl-6">
+              {[
+                { title: "EMPOWERMENT", desc: "We equip individuals with the tools, confidence, and support they need to take charge of their own healing and growth." },
+                { title: "COMMUNITY", desc: "We believe lasting change happens when communities come together with understanding, empathy, and shared purpose." },
+                { title: "EXCELLENCE", desc: "We are committed to delivering the highest quality of mental health support, education, and advocacy in everything we do." },
+                { title: "HOPE", desc: "We believe in the potential of every person to heal, grow, and build a better future — no matter where they are starting from." },
+              ].map((v) => (
+                <div key={v.title} className="flex items-start gap-3">
+                  <div className="flex-1 border-b border-gray-200 pb-4 text-right">
+                    <h3 className="font-extrabold text-blue-900 text-sm mb-1">{v.title}</h3>
+                    <p className="text-gray-500 text-xs leading-relaxed">{v.desc}</p>
+                  </div>
+                  <div className="w-2 h-2 rounded-full bg-blue-700 shrink-0 mt-1.5" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
       <Footer />
     </div>
   )
 }
-
-export default AboutUs

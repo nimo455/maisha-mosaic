@@ -1,120 +1,116 @@
-import heroImage from "../assets/card4.jpg"
 import { Link } from "react-router-dom"
+import { GraduationCap, Clock, MapPin, CheckCircle, Users, ArrowRight } from "lucide-react"
 import Footer from "../components/Footer"
 
 export default function Coaching() {
   return (
-    <div className="min-h-screen bg-white">
-      <div className="relative">
-        <img src={heroImage} alt="Coaching" className="w-full h-[320px] object-cover" />
-       
-        <div className="absolute inset-0 flex flex-col justify-end px-16 pb-32">
-          <span className="text-black-200 text-lg font-bold tracking-[0.2em] uppercase mb-3">Our Services</span>
-          <h1 className="text-3xl font-extrabold text-black">Coaching on Stigmatization & Stereotypes</h1>
+    <div className="bg-white">
+
+      {/* Hero */}
+      <div className="bg-blue-800 py-16">
+        <div className="max-w-6xl mx-auto px-6">
+          <p className="text-blue-200 text-xs font-semibold tracking-widest uppercase mb-3">Our Services</p>
+          <h1 className="text-4xl font-bold text-white mb-3">Coaching on Stigmatization</h1>
+          <div className="w-12 h-0.5 bg-blue-400 mb-5" />
+          <p className="text-blue-100 text-sm max-w-xl leading-relaxed">
+            Breaking the silence around mental health stigma through personal coaching, group workshops, and community education across Garissa, Kenya.
+          </p>
         </div>
       </div>
 
-      <div className="max-w-[1160px] mx-auto px-10 py-16">
+      <div className="max-w-6xl mx-auto px-6 py-12">
 
-        <div className="gap-16 items-center mb-20">
+        {/* About + Topics */}
+        <div className="grid md:grid-cols-2 gap-12 mb-14">
           <div>
-            <span className="text-blue-700 text-sm font-bold tracking-[0.2em] uppercase">Breaking Barriers</span>
-            <h2 className="text-3xl font-extrabold text-gray-900 mt-2 mb-6">Challenging Stigma & Stereotypes Together</h2>
-            <p className="text-gray-600 leading-relaxed mb-4">
-              Stigma and stereotypes are among the greatest barriers to mental health care in our communities. Fear of judgment, cultural misconceptions, and deeply ingrained stereotypes prevent thousands of people from seeking the help they desperately need.
+            <h2 className="text-2xl font-bold text-gray-800 mb-1">ABOUT THIS SERVICE</h2>
+            <div className="w-full h-px bg-blue-700 mb-1" /><div className="w-16 h-0.5 bg-blue-700 mb-6" />
+            <p className="text-gray-600 text-sm leading-relaxed mb-4">
+              Stigma is one of the biggest barriers preventing people from seeking mental health support. At Maisha Mosaic Foundation, we directly address this through targeted coaching and education programs.
             </p>
-            <p className="text-gray-600 leading-relaxed mb-4">
-              At Maisha Mosaic Foundation, our coaching program directly tackles these barriers through structured educational sessions, open conversations, and community engagement. We work with individuals, families, schools, and organisations to shift mindsets and create cultures of understanding and acceptance.
+            <p className="text-gray-600 text-sm leading-relaxed mb-4">
+              Our coaching sessions help individuals, families, schools, and organisations understand mental health better, challenge harmful beliefs, and create environments where seeking help is encouraged — not judged.
             </p>
-            <p className="text-gray-600 leading-relaxed">
-              Our coaches are trained mental health advocates with lived experience and professional expertise. They guide participants through evidence-based conversations that challenge myths, replace stereotypes with facts, and build empathy for those living with mental health challenges.
+            <p className="text-gray-600 text-sm leading-relaxed">
+              Sessions are available in Swahili, English, and Somali to ensure everyone in Garissa can access and benefit from this service.
             </p>
+          </div>
+
+          <div>
+            <h2 className="text-2xl font-bold text-gray-800 mb-1">TOPICS WE COVER</h2>
+            <div className="w-full h-px bg-blue-700 mb-1" /><div className="w-16 h-0.5 bg-blue-700 mb-6" />
+            <ul className="space-y-3">
+              {[
+                "What mental health stigma is and where it comes from",
+                "How stigma affects individuals and communities",
+                "Breaking cultural and religious misconceptions about mental health",
+                "How to talk about mental health openly and supportively",
+                "Supporting a friend or family member without judgment",
+                "Creating stigma-free environments in schools and workplaces",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3 text-sm text-gray-600">
+                  <CheckCircle size={14} className="text-blue-700 shrink-0 mt-0.5" />
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
-        {/* What we address */}
-        <div className="mb-20">
-          <div className="text-center mb-12">
-            <span className="text-blue-700 text-sm font-bold tracking-[0.2em] uppercase">Topics</span>
-            <h2 className="text-3xl font-extrabold text-gray-900 mt-2">What We Address</h2>
-          </div>
-          <div className="grid md:grid-cols-2 gap-6">
+        {/* Who it is for */}
+        <div className="mb-14">
+          <h2 className="text-2xl font-bold text-gray-800 mb-1">WHO IS THIS FOR</h2>
+          <div className="w-full h-px bg-blue-700 mb-1" /><div className="w-16 h-0.5 bg-blue-700 mb-10" />
+          <div className="grid md:grid-cols-3 gap-6">
             {[
-              {
-                icon: "🧠",
-                title: "Mental Health Stigma",
-                desc: "Many people in our community associate mental illness with weakness, spiritual failure, or family shame. Our coaching replaces these harmful beliefs with understanding, compassion, and facts about mental health.",
-              },
-              {
-                icon: "👤",
-                title: "Gender Stereotypes",
-                desc: "Men are often taught that seeking help is a sign of weakness. Women face different pressures. We challenge these stereotypes and create space for everyone to seek and receive support without judgment.",
-              },
-              {
-                icon: "🌍",
-                title: "Cultural & Religious Misconceptions",
-                desc: "We work sensitively within cultural and religious contexts to show that seeking mental health support is compatible with — and supported by — values of compassion and community care.",
-              },
-              {
-                icon: "📢",
-                title: "Language & Labels",
-                desc: "The words we use about mental health matter. We coach individuals and communities on using respectful, accurate language that empowers rather than marginalises those living with mental health challenges.",
-              },
-            ].map((t) => (
-              <div key={t.title} className="bg-gray-50 border border-gray-100 rounded-2xl p-7 hover:border-blue-200 hover:bg-blue-50 transition-all">
-                <div className="text-3xl mb-4">{t.icon}</div>
-                <h3 className="font-bold text-gray-900 text-lg mb-3">{t.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{t.desc}</p>
+              { title: "Individuals", desc: "Anyone who has experienced stigma, self-stigma, or wants to better understand mental health for themselves and those around them." },
+              { title: "Families", desc: "Families who want to better support a loved one dealing with mental health challenges without shame or misunderstanding." },
+              { title: "Communities", desc:"Local communities, religious institutions, and neighbourhood groups who want to understand mental health better and create environments where seeking help is encouraged and celebrated."},
+            ].map((w) => (
+              <div key={w.title} className="border border-gray-200 rounded-lg p-6 hover:border-blue-200 hover:shadow-sm transition-all">
+                <h3 className="font-semibold text-gray-900 text-sm mb-3">{w.title}</h3>
+                <p className="text-gray-500 text-sm leading-relaxed">{w.desc}</p>
               </div>
             ))}
           </div>
         </div>
 
         {/* Outcomes */}
-        <div className="bg-blue-50 rounded-3xl p-10 mb-16 border border-blue-100">
-          <h2 className="text-2xl font-extrabold text-gray-900 mb-8 text-center">What Participants Gain</h2>
+        <div className="mb-14">
+          <h2 className="text-2xl font-bold text-gray-800 mb-1">EXPECTED OUTCOMES</h2>
+          <div className="w-full h-px bg-blue-700 mb-1" /><div className="w-16 h-0.5 bg-blue-700 mb-10" />
           <div className="grid md:grid-cols-2 gap-4">
             {[
-              "Deeper understanding of mental health conditions",
-              "Tools to challenge their own biases and assumptions",
-              "Language to speak about mental health respectfully",
-              "Ability to support friends and family seeking help",
-              "Confidence to speak out against stigma in their community",
-              "Connection to mental health resources and services",
-              "Empathy and compassion for those struggling",
-              "A transformed perspective on strength and vulnerability",
-            ].map((b) => (
-              <div key={b} className="flex items-center gap-3 text-sm text-gray-700">
-                <span className="text-blue-700 font-bold shrink-0">✓</span> {b}
+              "Increased awareness and understanding of mental health",
+              "Reduced fear and shame around seeking help",
+              "More open conversations about mental health in families and communities",
+              "Stronger support networks for those struggling with mental health",
+              "Greater empathy and compassion within communities",
+              "Reduction in discrimination against those with mental health conditions",
+            ].map((item) => (
+              <div key={item} className="flex items-start gap-3 p-4 border border-gray-200 rounded-lg">
+                <CheckCircle size={14} className="text-blue-700 shrink-0 mt-0.5" />
+                <p className="text-gray-600 text-sm">{item}</p>
               </div>
             ))}
           </div>
         </div>
-
-        {/* Invite Us Section - No Card */}
-        <div className="text-center py-12">
-          <h2 className="text-3xl font-extrabold text-gray-900 mb-4">Invite Us to Your Community</h2>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
-            We are available to conduct coaching sessions at schools, workplaces, religious institutions, 
-            and community events across Garissa County and beyond.
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Link 
-              to="/contact" 
-              className="bg-blue-700 text-white font-bold px-10 py-4 rounded-full no-underline hover:bg-blue-800 transition-all shadow-lg hover:shadow-xl"
-            >
-              Invite Us
-            </Link>
-            <Link 
-              to="/donate" 
-              className="border-2 border-blue-700 text-blue-700 font-bold px-10 py-4 rounded-full no-underline hover:bg-blue-700 hover:text-white transition-all"
-            >
-              Support This Program
-            </Link>
-          </div>
-        </div>
-
       </div>
+
+      {/* CTA */}
+      <div className="py-14 bg-white">
+        <div className="max-w-6xl mx-auto px-6 text-center">
+          <h2 className="text-2xl font-bold text-black mb-3">Request a Coaching Session</h2>
+          <p className="text-black-100 text-sm max-w-lg mx-auto mb-8 leading-relaxed">
+            Ready to break the stigma in your community, school, or workplace? Contact us to arrange a free coaching session in Garissa.
+          </p>
+          <Link to="/contact" className="inline-flex items-center gap-2 bg-white text-blue-800 font-semibold px-6 py-3 text-sm rounded no-underline hover:bg-blue-50 transition-colors">
+            Contact Us <ArrowRight size={15} />
+          </Link>
+        </div>
+      </div>
+
+      
       <Footer />
     </div>
   )
