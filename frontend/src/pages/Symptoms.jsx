@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import heroImage from "../assets/hero-image.jpg"
+
 
 const symptoms = {
   mood: [
@@ -205,20 +205,17 @@ export default function Symptoms() {
   return (
     <div className="min-h-screen bg-gray-50">
 
-      {/* Hero */}
-      <div className="relative">
-        <img src={heroImage} alt="Symptoms" className="w-full h-[300px] object-cover" />
-        <div className="absolute inset-0 flex flex-col justify-center px-16">
-          <div>
-            <h1 className="text-4xl md:text-5xl font-extrabold text-black mb-3">
-              How Are You Feeling? 💭
-            </h1>
-            <p className="text-black-300 text-lg max-w-lg">
-              Select everything you have been feeling lately and tap Apply to chat with our AI support.
-            </p>
-          </div>
-        </div>
-      </div>
+     {/* Hero */}
+<div className="bg-blue-800 py-16">
+  <div className="max-w-6xl mx-auto px-6">
+    <p className="text-blue-200 text-xs font-semibold tracking-widest uppercase mb-3">Mental Health Check</p>
+    <h1 className="text-4xl font-bold text-white mb-3">How Are You Feeling?</h1>
+    <div className="w-12 h-0.5 bg-blue-400 mb-5" />
+    <p className="text-blue-100 text-sm max-w-lg leading-relaxed">
+      Select everything you have been feeling lately and tap Apply to chat with our AI support.
+    </p>
+  </div>
+</div>
 
       {/* Chat History Modal */}
       {showHistory && (

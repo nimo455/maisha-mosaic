@@ -1,32 +1,21 @@
 import { Link } from "react-router-dom"
-
-import heroImage from "../assets/hero-image.jpg"
 import Footer from "../components/Footer"
 
 function LearnMore() {
   return ( 
     <div>
 
-      {/* Hero */}
-      <div className="relative">
-        <img
-          src={heroImage}
-          alt="Learn More"
-          className="w-full h-[300px] object-cover"
-        />
-        
-        <div className="absolute inset-0 flex flex-col items-start justify-center px-16 text-black">
-          {/* Back button */}
-         
-
-          <h1 className="text-5xl font-extrabold mb-4 max-w-xl leading-tight text-black-900">
-            Building Stronger Communities
-          </h1>
-          <p className="text-lg text-gray-900 max-w-md mb-8 text-lg">
-          Dedicated to improving lives through sustainable initiatives in mental health, education, and community development across Kenya.
-        </p>
-        </div>
-      </div>
+{/* Hero */}
+<div className="bg-blue-800 py-16">
+  <div className="max-w-6xl mx-auto px-6">
+    <p className="text-blue-200 text-xs font-semibold tracking-widest uppercase mb-3">Maisha Mosaic Foundation</p>
+    <h1 className="text-4xl font-bold text-white mb-3">Learn More</h1>
+    <div className="w-12 h-0.5 bg-blue-400 mb-5" />
+    <p className="text-blue-100 text-sm max-w-lg leading-relaxed">
+      Understand who we are, what we do, and how we are changing lives across Garissa, Kenya.
+    </p>
+  </div>
+</div>
 
       {/* Page Content */}
       <div className="max-w-[1160px] mx-auto px-10 py-24">
@@ -58,6 +47,7 @@ function LearnMore() {
       </div>
       <Footer />
     </div>
+    
   )
 }
 
