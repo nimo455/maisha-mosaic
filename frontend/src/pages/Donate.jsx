@@ -15,7 +15,7 @@ export default function Donate() {
     setMpesaLoading(true)
     setMpesaStatus(null)
     try {
-      const res = await fetch("https://maisha-mosaic-backend.onrender.com/api/donate/mpesa", {
+      const res = await fetch("https://maisha-mosaic.onrender.com/api/donate/mpesa", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(mpesaForm)
@@ -39,7 +39,7 @@ export default function Donate() {
     setBankLoading(true)
     setBankStatus(null)
     try {
-      const res = await fetch("https://maisha-mosaic-backend.onrender.com/api/donate/bank", {
+      const res = await fetch("https://maisha-mosaic.onrender.com/api/donate/bank", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(bankForm)

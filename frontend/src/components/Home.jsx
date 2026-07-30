@@ -64,7 +64,7 @@ export default function Home() {
   })
 
   useEffect(() => {
-    fetch("https://maisha-mosaic-backend.onrender.com/api/stats")
+    fetch("https://maisha-mosaic.onrender.com/api/stats")
       .then(res => res.json())
       .then(data => setStats(data))
       .catch(() => {})
