@@ -133,7 +133,7 @@ def delete_contact(id):
 
 # ── Donations ──────────────────────────────────────────────────────────────
 @app.route("/api/donate/mpesa", methods=["POST"])
-defxdonate_mpesa():
+def donate_mpesa():
     data   = request.get_json()
     amount = data.get("amount")
     name   = data.get("name",  "").strip()
