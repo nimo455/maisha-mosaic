@@ -6,6 +6,8 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from datetime import datetime
 import os
+import requests as req
+import base64
 
 app = Flask(__name__)
 CORS(app)
@@ -13,7 +15,7 @@ CORS(app)
 DB_PATH = "maisha.db"
 
 EMAIL_FROM     = "maishamosaic047@gmail.com"
-EMAIL_PASSWORD = "noyi xage yetu hgpj"
+EMAIL_PASSWORD = os.environ.get("EMAIL_PASSWORD", "noyi xage yetu hgpj")
 EMAIL_TO       = "maishamosaic047@gmail.com"
 
 
@@ -131,6 +133,18 @@ def delete_contact(id):
     return jsonify({"success": True})
 
 
+# ── M-Pesa Token ───────────────────────────────────────────────────────────
+def get_mpesa_token():
+    key    = os.environ.get("MPESA_CONSUMER_KEY", "")
+    secret = os.environ.get("MPESA_CONSUMER_SECRET", "")
+    creds  = base64.b64encode(f"{key}:{secret}".encode()).decode()
+    res = req.get(
+        "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials",
+        headers={"Authorization": f"Basic {creds}"}
+    )
+    return res.json().get("access_token")
+
+
 # ── Donations ──────────────────────────────────────────────────────────────
 @app.route("/api/donate/mpesa", methods=["POST"])
 def donate_mpesa():
@@ -142,15 +156,80 @@ def donate_mpesa():
     if not amount or not name or not phone:
         return jsonify({"error": "All fields are required"}), 400
 
-    reference = f"MMF-MPESA-{datetime.now().strftime('%Y%m%d%H%M%S')}"
-    conn = get_db()
-    conn.execute(
-        "INSERT INTO donations (method, amount, name, phone, status, reference) VALUES (?, ?, ?, ?, ?, ?)",
-        ("mpesa", float(amount), name, phone, "pending", reference)
-    )
-    conn.commit()
-    conn.close()
-    return jsonify({"success": True, "reference": reference, "message": f"STK push sent to {phone}."}), 201
+    if phone.startswith("0"):
+        phone = "254" + phone[1:]
+    elif phone.startswith("+"):
+        phone = phone[1:]
+
+    reference = f"MMF-{datetime.now().strftime('%Y%m%d%H%M%S')}"
+
+    try:
+        token     = get_mpesa_token()
+        shortcode = os.environ.get("MPESA_SHORTCODE", "174379")
+        passkey   = os.environ.get("MPESA_PASSKEY", "")
+        timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
+        password  = base64.b64encode(f"{shortcode}{passkey}{timestamp}".encode()).decode()
+        callback  = os.environ.get("MPESA_CALLBACK_URL", "https://maisha-mosaic.onrender.com/api/mpesa/callback")
+
+        result = req.post(
+            "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest",
+            headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json"},
+            json={
+                "BusinessShortCode": shortcode,
+                "Password":          password,
+                "Timestamp":         timestamp,
+                "TransactionType":   "CustomerPayBillOnline",
+                "Amount":            int(float(amount)),
+                "PartyA":            phone,
+                "PartyB":            shortcode,
+                "PhoneNumber":       phone,
+                "CallBackURL":       callback,
+                "AccountReference":  reference,
+                "TransactionDesc":   f"Donation by {name}"
+            }
+        ).json()
+
+        print(f"STK Push result: {result}")
+
+        if result.get("ResponseCode") == "0":
+            conn = get_db()
+            conn.execute(
+                "INSERT INTO donations (method, amount, name, phone, status, reference) VALUES (?, ?, ?, ?, ?, ?)",
+                ("mpesa", float(amount), name, phone, "pending", reference)
+            )
+            conn.commit()
+            conn.close()
+            return jsonify({"success": True, "reference": reference,
+                "message": "STK push sent! Check your phone and enter your M-Pesa PIN."}), 201
+        else:
+            return jsonify({"error": result.get("errorMessage", "STK push failed. Please try again.")}), 400
+
+    except Exception as e:
+        print(f"M-Pesa error: {e}")
+        return jsonify({"error": "Could not process M-Pesa payment. Please try again."}), 500
+
+
+# ── M-Pesa Callback ────────────────────────────────────────────────────────
+@app.route("/api/mpesa/callback", methods=["POST"])
+def mpesa_callback():
+    data = request.get_json()
+    print(f"M-Pesa callback: {data}")
+    try:
+        result = data.get("Body", {}).get("stkCallback", {})
+        if result.get("ResultCode") == 0:
+            items   = {i["Name"]: i.get("Value") for i in result.get("CallbackMetadata", {}).get("Item", [])}
+            receipt = items.get("MpesaReceiptNumber", "")
+            phone   = str(items.get("PhoneNumber", ""))
+            conn = get_db()
+            conn.execute(
+                "UPDATE donations SET status='completed', reference=? WHERE phone LIKE ? AND status='pending'",
+                (receipt, f"%{phone[-6:]}")
+            )
+            conn.commit()
+            conn.close()
+    except Exception as e:
+        print(f"Callback error: {e}")
+    return jsonify({"ResultCode": 0, "ResultDesc": "Success"})
 
 
 @app.route("/api/donate/bank", methods=["POST"])
@@ -171,7 +250,7 @@ def donate_bank():
     )
     conn.commit()
     conn.close()
-    return jsonify({"success": True, "reference": reference, "message": "Thank you!"}), 201
+    return jsonify({"success": True, "reference": reference, "message": "Thank you! Please complete the bank transfer using the details provided."}), 201
 
 
 @app.route("/api/donations", methods=["GET"])
@@ -195,7 +274,6 @@ def track_session():
 # ── AI Chat ────────────────────────────────────────────────────────────────
 @app.route("/api/chat", methods=["POST"])
 def chat():
-    import requests as req
     data     = request.get_json()
     messages = data.get("messages", [])
     system   = data.get("system",   "")
@@ -206,7 +284,7 @@ def chat():
             "https://api.groq.com/openai/v1/chat/completions",
             headers={"Authorization": f"Bearer {GROQ_KEY}", "Content-Type": "application/json"},
             json={
-                "model":       "llama-3.3-70b-versatile",
+                "model":       "qwen/qwen3-32b",
                 "messages":    [{"role": "system", "content": system}] + messages,
                 "max_tokens":  300,
                 "temperature": 0.75
@@ -249,4 +327,3 @@ def health():
 if __name__ == "__main__":
     init_db()
     app.run(host="0.0.0.0", port=5000)
-
