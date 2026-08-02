@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { LayoutDashboard, Heart, MessageSquare, Users, TrendingUp, Trash2, Eye, EyeOff, RefreshCw, LogOut, Mail, Phone, Calendar, DollarSign } from "lucide-react"
+import { LayoutDashboard, Heart, MessageSquare, Users, TrendingUp, Trash2, Eye, EyeOff, RefreshCw, LogOut, Mail, Phone, Calendar, DollarSign, MessageCircle } from "lucide-react"
 
 const API = "https://maisha-mosaic.onrender.com"
 const ADMIN_PASSWORD = "maisha2024"
@@ -16,6 +16,18 @@ function StatCard({ icon: Icon, label, value, color, bg }) {
   )
 }
 
+const LogoSVG = ({ size = 54 }) => (
+  <svg width={size} height={size * 0.93} viewBox="0 0 54 58" fill="none">
+    <g stroke="#284378ff" strokeWidth="1.6" fill="none" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M16 44 C15 38 13 30 14 20 C15 12 18 8 20 6" />
+      <path d="M14 22 C8 18 4 14 6 8 C8 4 14 4 18 10 C16 14 14 18 14 22Z" />
+      <path d="M15 30 C10 27 7 22 9 17 C11 14 16 15 17 22 C16 25 15 28 15 30Z" />
+      <path d="M17 18 C14 14 13 10 15 7 C17 5 20 7 19 13 C18 15 17 17 17 18Z" />
+    </g>
+    <text x="14" y="52" fontSize="57" fontFamily="'Cormorant Garamond', Georgia, serif" fontWeight="700" fill="#1450c8" letterSpacing="-1">M</text>
+  </svg>
+)
+
 export default function Admin() {
   const [authed, setAuthed] = useState(false)
   const [password, setPassword] = useState("")
@@ -25,6 +37,7 @@ export default function Admin() {
   const [donations, setDonations] = useState([])
   const [contacts, setContacts] = useState([])
   const [stats, setStats] = useState(null)
+  const [chatCount, setChatCount] = useState(0)
   const [loading, setLoading] = useState(false)
 
   const handleLogin = (e) => {
@@ -41,14 +54,16 @@ export default function Admin() {
   const fetchAll = async () => {
     setLoading(true)
     try {
-      const [d, c, s] = await Promise.all([
+      const [d, c, s, chat] = await Promise.all([
         fetch(`${API}/api/donations`).then(r => r.json()),
         fetch(`${API}/api/contact`).then(r => r.json()),
         fetch(`${API}/api/stats`).then(r => r.json()),
+        fetch(`${API}/api/chat/sessions`).then(r => r.json()).catch(() => ({ count: 0 })),
       ])
       setDonations(Array.isArray(d) ? d : [])
       setContacts(Array.isArray(c) ? c : [])
       setStats(s)
+      setChatCount(chat.count || 0)
     } catch {
       console.error("Failed to fetch")
     } finally {
@@ -76,8 +91,8 @@ export default function Admin() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
         <div className="bg-white border border-gray-200 rounded-xl p-8 w-full max-w-sm shadow-sm">
           <div className="text-center mb-8">
-            <div className="w-14 h-14 bg-blue-700 rounded-xl flex items-center justify-center text-white mx-auto mb-4">
-              <LayoutDashboard size={24} strokeWidth={1.5} />
+            <div className="flex justify-center mb-4">
+              <LogoSVG size={54} />
             </div>
             <h1 className="text-xl font-bold text-gray-900">Admin Dashboard</h1>
             <p className="text-gray-400 text-sm mt-1">Maisha Mosaic Foundation</p>
@@ -124,15 +139,7 @@ export default function Admin() {
       <div className="bg-white border-b border-gray-200">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <svg width="32" height="30" viewBox="0 0 54 58" fill="none">
-              <g stroke="#284378ff" strokeWidth="1.6" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M16 44 C15 38 13 30 14 20 C15 12 18 8 20 6" />
-                <path d="M14 22 C8 18 4 14 6 8 C8 4 14 4 18 10 C16 14 14 18 14 22Z" />
-                <path d="M15 30 C10 27 7 22 9 17 C11 14 16 15 17 22 C16 25 15 28 15 30Z" />
-                <path d="M17 18 C14 14 13 10 15 7 C17 5 20 7 19 13 C18 15 17 17 17 18Z" />
-              </g>
-              <text x="14" y="52" fontSize="57" fontFamily="'Cormorant Garamond', Georgia, serif" fontWeight="700" fill="#1450c8" letterSpacing="-1">M</text>
-            </svg>
+            <LogoSVG size={32} />
             <div>
               <p className="text-sm font-bold text-gray-900">Maisha Mosaic Foundation</p>
               <p className="text-xs text-gray-400">Admin Dashboard</p>
@@ -180,12 +187,10 @@ export default function Admin() {
               <StatCard icon={Heart} label="Total Donations" value={donations.length} color="text-blue-700" bg="bg-blue-50" />
               <StatCard icon={DollarSign} label="Amount Raised (KES)" value={totalAmount.toLocaleString()} color="text-emerald-700" bg="bg-emerald-50" />
               <StatCard icon={MessageSquare} label="Contact Messages" value={contacts.length} color="text-violet-700" bg="bg-violet-50" />
-              <StatCard icon={Users} label="Lives Impacted" value={stats ? stats.lives_impacted.toLocaleString() + "+" : "—"} color="text-amber-700" bg="bg-amber-50" />
+              <StatCard icon={MessageCircle} label="Amani Chat Sessions" value={chatCount} color="text-amber-700" bg="bg-amber-50" />
             </div>
 
             <div className="grid md:grid-cols-2 gap-6">
-
-              {/* Donation Methods */}
               <div className="bg-white border border-gray-200 rounded-lg p-6">
                 <h3 className="font-semibold text-gray-900 text-sm mb-5">Donation Methods</h3>
                 <div className="space-y-4">
@@ -205,7 +210,6 @@ export default function Admin() {
                     </div>
                   ))}
                 </div>
-
                 <div className="mt-6 pt-4 border-t border-gray-100">
                   <div className="flex justify-between text-sm">
                     <span className="text-gray-500">Total Raised</span>
@@ -214,7 +218,6 @@ export default function Admin() {
                 </div>
               </div>
 
-              {/* Recent Donations */}
               <div className="bg-white border border-gray-200 rounded-lg p-6">
                 <h3 className="font-semibold text-gray-900 text-sm mb-5">Recent Donations</h3>
                 <div className="space-y-4">
@@ -240,10 +243,8 @@ export default function Admin() {
                   {donations.length === 0 && <p className="text-gray-400 text-sm text-center py-4">No donations yet</p>}
                 </div>
               </div>
-
             </div>
 
-            {/* Recent Messages */}
             <div className="bg-white border border-gray-200 rounded-lg p-6">
               <h3 className="font-semibold text-gray-900 text-sm mb-5">Recent Messages</h3>
               <div className="space-y-3">
