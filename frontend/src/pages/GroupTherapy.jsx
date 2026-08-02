@@ -18,7 +18,7 @@ export default function GroupTherapy() {
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-6 py-12">
+      <div className="max-w-6xl mx-auto px-1 py-12">
 
         {/* About + Who */}
         <div className="grid md:grid-cols-2 gap-12 mb-14">
@@ -55,6 +55,7 @@ export default function GroupTherapy() {
             </ul>
           </div>
         </div>
+        
 
         {/* Benefits */}
         <div className="mb-14">
@@ -134,9 +135,10 @@ export default function GroupTherapy() {
           </Link>
         </div>
       </div>
-
-      <div className="h-1 bg-gray-200" />
+   
+      
       <Footer />
     </div>
+   
   )
 }
