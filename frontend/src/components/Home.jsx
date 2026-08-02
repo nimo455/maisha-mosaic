@@ -103,47 +103,49 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Who We Are */}
-      <div className="py-14 bg-white">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-12 items-start">
-            <div>
-              <h2 className="text-2xl font-bold text-gray-800 mb-1">WHO WE ARE</h2>
-              <div className="w-full h-px bg-blue-700 mb-1" />
-              <div className="w-16 h-0.5 bg-blue-700 mb-6" />
-              <h3 className="text-lg font-semibold text-gray-700 mb-4">ABOUT MAISHA MOSAIC FOUNDATION</h3>
-              <div className="w-full h-px bg-blue-700 mb-1" />
-              <div className="w-16 h-0.5 bg-blue-700 mb-5" />
-              <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                Maisha Mosaic Foundation is a community-driven non-profit organisation rooted in Garissa, Kenya. We were born from a simple but powerful observation — that too many young people in our community were being misunderstood, judged, and left behind.
-              </p>
-              <p className="text-gray-600 text-sm leading-relaxed mb-6">
-                Instead of asking why they were struggling, society was pushing them further away. We created Maisha Mosaic to change that — to create a space where youth are heard without judgment, where the gap between them and their communities is bridged with understanding, and where every young person has the support they need to heal and rebuild their life.
-              </p>
-              <Link to="/about-us" className="inline-flex items-center gap-1 bg-blue-700 text-white text-sm font-medium px-5 py-2.5 rounded no-underline hover:bg-blue-800 transition-colors">
-                Read More <ArrowRight size={14} />
-              </Link>
-            </div>
+{/* Who We Are */}
+<div className="py-14 bg-white">
+  <div className="grid md:grid-cols-2 gap-12 items-start">
+    {/* Left content - constrained and starting from left */}
+    <div className="px-6 md:pl-6 max-w-6xl">
+      <h2 className="text-2xl font-bold text-gray-800 mb-1">WHO WE ARE</h2>
+      <div className="w-full h-px bg-blue-700 mb-1" />
+      <div className="w-16 h-0.5 bg-blue-700 mb-6" />
+      <h3 className="text-lg font-semibold text-gray-700 mb-4">ABOUT MAISHA MOSAIC FOUNDATION</h3>
+      <div className="w-full h-px bg-blue-700 mb-1" />
+      <div className="w-16 h-0.5 bg-blue-700 mb-5" />
+      <p className="text-gray-600 text-sm leading-relaxed mb-4">
+        Maisha Mosaic Foundation is a community-driven non-profit organisation rooted in Garissa, Kenya. We were born from a simple but powerful observation — that too many young people in our community were being misunderstood, judged, and left behind.
+      </p>
+      <p className="text-gray-600 text-sm leading-relaxed mb-6">
+        Instead of asking why they were struggling, society was pushing them further away. We created Maisha Mosaic to change that — to create a space where youth are heard without judgment, where the gap between them and their communities is bridged with understanding, and where every young person has the support they need to heal and rebuild their life.
+      </p>
+      <Link to="/about-us" className="inline-flex items-center gap-1 bg-blue-700 text-white text-sm font-medium px-5 py-2.5 rounded no-underline hover:bg-blue-800 transition-colors">
+        Read More <ArrowRight size={14} />
+      </Link>
+    </div>
 
-            <div>
-              <img src={community} alt="Community" className="w-full h-56 object-cover mb-4 rounded" />
-              <div className="grid grid-cols-2 gap-3">
-                {[
-                  { value: stats.lives_impacted.toLocaleString() + "+", label: "Lives Impacted" },
-                  { value: stats.education_programs + "+", label: "Education Programs" },
-                  { value: stats.health_initiatives + "+", label: "Health Initiatives" },
-                  { value: stats.community_partners + "+", label: "Community Partners" },
-                ].map((s) => (
-                  <div key={s.label} className="bg-blue-700 text-white rounded p-4 text-center">
-                    <p className="text-2xl font-bold">{s.value}</p>
-                    <p className="text-blue-200 text-xs mt-1">{s.label}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
+    {/* Right content - full width, no constraints */}
+    <div className="px-6 md:pr-6">
+      <img src={community} alt="Community" className="w-full h-56 object-cover mb-4 rounded" />
+      <div className="grid grid-cols-2 gap-3">
+        {[
+          { value: stats.lives_impacted.toLocaleString() + "+", label: "Lives Impacted" },
+          { value: stats.education_programs + "+", label: "Education Programs" },
+          { value: stats.health_initiatives + "+", label: "Health Initiatives" },
+          { value: stats.community_partners + "+", label: "Community Partners" },
+        ].map((s) => (
+          <div key={s.label} className="bg-blue-700 text-white rounded p-4 text-center">
+            <p className="text-2xl font-bold">{s.value}</p>
+            <p className="text-blue-200 text-xs mt-1">{s.label}</p>
           </div>
-        </div>
+        ))}
       </div>
+    </div>
+  </div>
+</div>
+
+      
 
       {/* Our Services */}
       <div className="py-14 bg-gray-50 border-t border-gray-200">

@@ -18,49 +18,59 @@ export default function GroupTherapy() {
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-1 py-12">
-
-        {/* About + Who */}
-        <div className="grid md:grid-cols-2 gap-12 mb-14">
-          <div>
-            <h2 className="text-2xl font-bold text-gray-800 mb-1">WHAT IS GROUP THERAPY</h2>
-            <div className="w-full h-px bg-blue-700 mb-1" /><div className="w-16 h-0.5 bg-blue-700 mb-6" />
-            <p className="text-gray-600 text-sm leading-relaxed mb-4">
-              Group therapy is a form of psychotherapy where a small group of people meet regularly to discuss their challenges, share experiences, and support one another under the guidance of a trained therapist.
-            </p>
-            <p className="text-gray-600 text-sm leading-relaxed mb-4">
-              At Maisha Mosaic Foundation, our group therapy sessions provide a safe, confidential, and non-judgmental environment where participants can openly express themselves and receive both professional guidance and peer support.
-            </p>
-            <p className="text-gray-600 text-sm leading-relaxed">
-              Sessions are conducted in Swahili and English to ensure everyone feels comfortable and understood.
-            </p>
-          </div>
-          <div>
-            <h2 className="text-2xl font-bold text-gray-800 mb-1">WHO CAN JOIN</h2>
-            <div className="w-full h-px bg-blue-700 mb-1" /><div className="w-16 h-0.5 bg-blue-700 mb-6" />
-            <ul className="space-y-3">
-              {[
-                "Anyone struggling with depression, anxiety, or trauma",
-                "Individuals dealing with grief and loss",
-                "People experiencing stress or burnout",
-                "Those recovering from substance use or addiction",
-                "Anyone who feels lonely, misunderstood, or lost",
-                "Community members seeking peer support and connection",
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-3 text-sm text-gray-600">
-                  <CheckCircle size={14} className="text-blue-700 shrink-0 mt-0.5" />
-                  {item}
-                </li>
-              ))}
-            </ul>
+      {/* About + Who - Using the same layout as "Who We Are" */}
+      <div className="py-7 bg-white">
+        <div className="container mx-0 px-6 max-w-full">
+          <div className="grid md:grid-cols-2 gap-12 items-start">
+            
+            {/* Left: WHAT IS GROUP THERAPY - starts from left */}
+            <div>
+              <h2 className="text-2xl font-bold text-gray-800 mb-1">WHAT IS GROUP THERAPY</h2>
+              <div className="w-full h-px bg-blue-700 mb-1" />
+              <div className="w-16 h-0.5 bg-blue-700 mb-6" />
+              <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                Group therapy is a form of psychotherapy where a small group of people meet regularly to discuss their challenges, share experiences, and support one another under the guidance of a trained therapist.
+              </p>
+              <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                At Maisha Mosaic Foundation, our group therapy sessions provide a safe, confidential, and non-judgmental environment where participants can openly express themselves and receive both professional guidance and peer support.
+              </p>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                Sessions are conducted in Swahili and English to ensure everyone feels comfortable and understood.
+              </p>
+            </div>
+            
+            {/* Right: WHO CAN JOIN - extends to right end */}
+            <div>
+              <h2 className="text-2xl font-bold text-gray-800 mb-1">WHO CAN JOIN</h2>
+              <div className="w-full h-px bg-blue-700 mb-1" />
+              <div className="w-16 h-0.5 bg-blue-700 mb-6" />
+              <ul className="space-y-3">
+                {[
+                  "Anyone struggling with depression, anxiety, or trauma",
+                  "Individuals dealing with grief and loss",
+                  "People experiencing stress or burnout",
+                  "Those recovering from substance use or addiction",
+                  "Anyone who feels lonely, misunderstood, or lost",
+                  "Community members seeking peer support and connection",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-sm text-gray-600">
+                    <CheckCircle size={14} className="text-blue-700 shrink-0 mt-0.5" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
-        
+      </div>
 
-        {/* Benefits */}
-        <div className="mb-14">
-          <h2 className="text-2xl font-bold text-gray-800 mb-1">BENEFITS OF GROUP THERAPY</h2>
-          <div className="w-full h-px bg-blue-700 mb-1" /><div className="w-16 h-0.5 bg-blue-700 mb-10" />
+      {/* Benefits - Centered */}
+      <div className="py-7 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center">
+            <h2 className="text-2xl font-bold text-gray-800 mb-1">BENEFITS OF GROUP THERAPY</h2>
+            <div className="w-16 h-0.5 bg-blue-700 mx-auto mb-10" />
+          </div>
           <div className="grid md:grid-cols-3 gap-6 mb-10">
             {[
               { title: "You Are Not Alone", desc: "Hearing others share similar struggles helps you realise that your experiences are not unique — and that healing is possible." },
@@ -76,12 +86,15 @@ export default function GroupTherapy() {
               </div>
             ))}
           </div>
+        </div>
+      </div>
 
-
-        {/* How to Join */}
-        <div className="mb-14">
+      {/* How to Join - Left aligned */}
+      <div className="py-7 bg-white">
+        <div className="container mx-0 px-6 max-w-full">
           <h2 className="text-2xl font-bold text-gray-800 mb-1">HOW TO JOIN</h2>
-          <div className="w-full h-px bg-blue-700 mb-1" /><div className="w-16 h-0.5 bg-blue-700 mb-10" />
+          <div className="w-full h-px bg-blue-700 mb-1" />
+          <div className="w-16 h-0.5 bg-blue-700 mb-10" />
           <div className="grid md:grid-cols-3 gap-6">
             {[
               { step: "01", title: "Contact Us", desc: "Call, WhatsApp, or email us to express your interest in joining a group therapy session." },
@@ -100,7 +113,9 @@ export default function GroupTherapy() {
         </div>
       </div>
 
-       {/* Info Cards */}
+      {/* Info Cards - Centered */}
+      <div className="py-14 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               { icon: Clock, title: "Schedule", lines: ["Every Wednesday & Saturday", "10:00 AM – 12:00 PM"] },
@@ -122,8 +137,9 @@ export default function GroupTherapy() {
             })}
           </div>
         </div>
+      </div>
 
-      {/* CTA */}
+      {/* CTA - Keep as is */}
       <div className="py-14 bg-white">
         <div className="max-w-6xl mx-auto px-6 text-center">
           <h2 className="text-2xl font-bold text-black mb-3">Ready to Join a Session?</h2>
@@ -135,10 +151,8 @@ export default function GroupTherapy() {
           </Link>
         </div>
       </div>
-   
       
       <Footer />
     </div>
-   
   )
 }

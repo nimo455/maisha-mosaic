@@ -18,46 +18,54 @@ export default function CommunityOutreach() {
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-6 py-12">
+      {/* About + What we teach - Using the same layout as "Who We Are" */}
+      <div className="py-14 bg-white">
+        <div className="container mx-0 px-6 max-w-full">
+          <div className="grid md:grid-cols-2 gap-12 items-start">
+            
+            {/* Left: ABOUT THIS SERVICE - starts from left */}
+            <div>
+              <h2 className="text-2xl font-bold text-gray-800 mb-1">ABOUT THIS SERVICE</h2>
+              <div className="w-full h-px bg-blue-700 mb-1" />
+              <div className="w-16 h-0.5 bg-blue-700 mb-6" />
+              <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                At Maisha Mosaic Foundation, we believe that mental health support should come to the people — not the other way around. Our community outreach program takes our services directly into the heart of Garissa communities.
+              </p>
+              <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                Through outreach, we meet people where they are — physically, emotionally, and culturally. We conduct awareness campaigns, mental health screenings, educational workshops, and connect community members with the support they need.
+              </p>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                Our outreach team consists of trained mental health advocates, community health workers, and volunteers who are passionate about making a difference in Garissa.
+              </p>
+            </div>
 
-        {/* About + What we teach */}
-        <div className="grid md:grid-cols-2 gap-12 mb-14">
-          <div>
-            <h2 className="text-2xl font-bold text-gray-800 mb-1">ABOUT THIS SERVICE</h2>
-            <div className="w-full h-px bg-blue-700 mb-1" /><div className="w-16 h-0.5 bg-blue-700 mb-6" />
-            <p className="text-gray-600 text-sm leading-relaxed mb-4">
-              At Maisha Mosaic Foundation, we believe that mental health support should come to the people — not the other way around. Our community outreach program takes our services directly into the heart of Garissa communities.
-            </p>
-            <p className="text-gray-600 text-sm leading-relaxed mb-4">
-              Through outreach, we meet people where they are — physically, emotionally, and culturally. We conduct awareness campaigns, mental health screenings, educational workshops, and connect community members with the support they need.
-            </p>
-            <p className="text-gray-600 text-sm leading-relaxed">
-              Our outreach team consists of trained mental health advocates, community health workers, and volunteers who are passionate about making a difference in Garissa.
-            </p>
-          </div>
-
-          <div>
-            <h2 className="text-2xl font-bold text-gray-800 mb-1">WHAT WE TEACH</h2>
-            <div className="w-full h-px bg-blue-700 mb-1" /><div className="w-16 h-0.5 bg-blue-700 mb-6" />
-            <ul className="space-y-3">
-              {[
-                "How to recognise signs of depression, anxiety, and trauma",
-                "Understanding mental health conditions and reducing stigma",
-                "How to support a friend or family member who is struggling",
-                "When, where, and how to seek professional help",
-                "Building emotional resilience and healthy coping skills",
-                "Breaking generational cycles of unaddressed mental health struggles",
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-3 text-sm text-gray-600">
-                  <CheckCircle size={14} className="text-blue-700 shrink-0 mt-0.5" />
-                  {item}
-                </li>
-              ))}
-            </ul>
+            {/* Right: WHAT WE TEACH - extends to right end */}
+            <div>
+              <h2 className="text-2xl font-bold text-gray-800 mb-1">WHAT WE TEACH</h2>
+              <div className="w-full h-px bg-blue-700 mb-1" />
+              <div className="w-16 h-0.5 bg-blue-700 mb-6" />
+              <ul className="space-y-3">
+                {[
+                  "How to recognise signs of depression, anxiety, and trauma",
+                  "Understanding mental health conditions and reducing stigma",
+                  "How to support a friend or family member who is struggling",
+                  "When, where, and how to seek professional help",
+                  "Building emotional resilience and healthy coping skills",
+                  "Breaking generational cycles of unaddressed mental health struggles",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-sm text-gray-600">
+                    <CheckCircle size={14} className="text-blue-700 shrink-0 mt-0.5" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
+      </div>
 
-        {/* Programs */}
+      {/* Programs - Unchanged */}
+      <div className="max-w-6xl mx-auto px-6">
         <div className="mb-14">
           <h2 className="text-2xl font-bold text-gray-800 mb-1">OUR OUTREACH PROGRAMS</h2>
           <div className="w-full h-px bg-blue-700 mb-1" /><div className="w-16 h-0.5 bg-blue-700 mb-10" />
@@ -75,7 +83,7 @@ export default function CommunityOutreach() {
           </div>
         </div>
 
-        {/* Impact */}
+        {/* Impact - Unchanged */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-14">
           {[
             { value: "5,000+", label: "People Reached" },
@@ -90,7 +98,7 @@ export default function CommunityOutreach() {
         </div>
       </div>
 
-      {/* CTA */}
+      {/* CTA - Unchanged */}
       <div className="py-14 bg-white">
         <div className="max-w-6xl mx-auto px-6 text-center">
           <h2 className="text-2xl font-bold text-black mb-3">Invite Us to Your Community</h2>
@@ -102,7 +110,6 @@ export default function CommunityOutreach() {
           </Link>
         </div>
       </div>
-
       
       <Footer />
     </div>

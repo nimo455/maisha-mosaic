@@ -18,46 +18,54 @@ export default function Coaching() {
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-6 py-12">
+      {/* About + Topics - Using the same layout as "Who We Are" */}
+      <div className="py-14 bg-white">
+        <div className="container mx-0 px-6 max-w-full">
+          <div className="grid md:grid-cols-2 gap-12 items-start">
+            
+            {/* Left: ABOUT THIS SERVICE - starts from left */}
+            <div>
+              <h2 className="text-2xl font-bold text-gray-800 mb-1">ABOUT THIS SERVICE</h2>
+              <div className="w-full h-px bg-blue-700 mb-1" />
+              <div className="w-16 h-0.5 bg-blue-700 mb-6" />
+              <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                Stigma is one of the biggest barriers preventing people from seeking mental health support. At Maisha Mosaic Foundation, we directly address this through targeted coaching and education programs.
+              </p>
+              <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                Our coaching sessions help individuals, families, schools, and organisations understand mental health better, challenge harmful beliefs, and create environments where seeking help is encouraged — not judged.
+              </p>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                Sessions are available in Swahili, English, and Somali to ensure everyone in Garissa can access and benefit from this service.
+              </p>
+            </div>
 
-        {/* About + Topics */}
-        <div className="grid md:grid-cols-2 gap-12 mb-14">
-          <div>
-            <h2 className="text-2xl font-bold text-gray-800 mb-1">ABOUT THIS SERVICE</h2>
-            <div className="w-full h-px bg-blue-700 mb-1" /><div className="w-16 h-0.5 bg-blue-700 mb-6" />
-            <p className="text-gray-600 text-sm leading-relaxed mb-4">
-              Stigma is one of the biggest barriers preventing people from seeking mental health support. At Maisha Mosaic Foundation, we directly address this through targeted coaching and education programs.
-            </p>
-            <p className="text-gray-600 text-sm leading-relaxed mb-4">
-              Our coaching sessions help individuals, families, schools, and organisations understand mental health better, challenge harmful beliefs, and create environments where seeking help is encouraged — not judged.
-            </p>
-            <p className="text-gray-600 text-sm leading-relaxed">
-              Sessions are available in Swahili, English, and Somali to ensure everyone in Garissa can access and benefit from this service.
-            </p>
-          </div>
-
-          <div>
-            <h2 className="text-2xl font-bold text-gray-800 mb-1">TOPICS WE COVER</h2>
-            <div className="w-full h-px bg-blue-700 mb-1" /><div className="w-16 h-0.5 bg-blue-700 mb-6" />
-            <ul className="space-y-3">
-              {[
-                "What mental health stigma is and where it comes from",
-                "How stigma affects individuals and communities",
-                "Breaking cultural and religious misconceptions about mental health",
-                "How to talk about mental health openly and supportively",
-                "Supporting a friend or family member without judgment",
-                "Creating stigma-free environments in schools and workplaces",
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-3 text-sm text-gray-600">
-                  <CheckCircle size={14} className="text-blue-700 shrink-0 mt-0.5" />
-                  {item}
-                </li>
-              ))}
-            </ul>
+            {/* Right: TOPICS WE COVER - extends to right end */}
+            <div>
+              <h2 className="text-2xl font-bold text-gray-800 mb-1">TOPICS WE COVER</h2>
+              <div className="w-full h-px bg-blue-700 mb-1" />
+              <div className="w-16 h-0.5 bg-blue-700 mb-6" />
+              <ul className="space-y-3">
+                {[
+                  "What mental health stigma is and where it comes from",
+                  "How stigma affects individuals and communities",
+                  "Breaking cultural and religious misconceptions about mental health",
+                  "How to talk about mental health openly and supportively",
+                  "Supporting a friend or family member without judgment",
+                  "Creating stigma-free environments in schools and workplaces",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-sm text-gray-600">
+                    <CheckCircle size={14} className="text-blue-700 shrink-0 mt-0.5" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
+      </div>
 
-        {/* Who it is for */}
+      {/* Who it is for - Unchanged */}
+      <div className="max-w-6xl mx-auto px-6">
         <div className="mb-14">
           <h2 className="text-2xl font-bold text-gray-800 mb-1">WHO IS THIS FOR</h2>
           <div className="w-full h-px bg-blue-700 mb-1" /><div className="w-16 h-0.5 bg-blue-700 mb-10" />
@@ -75,7 +83,7 @@ export default function Coaching() {
           </div>
         </div>
 
-        {/* Outcomes */}
+        {/* Outcomes - Unchanged */}
         <div className="mb-14">
           <h2 className="text-2xl font-bold text-gray-800 mb-1">EXPECTED OUTCOMES</h2>
           <div className="w-full h-px bg-blue-700 mb-1" /><div className="w-16 h-0.5 bg-blue-700 mb-10" />
@@ -97,7 +105,7 @@ export default function Coaching() {
         </div>
       </div>
 
-      {/* CTA */}
+      {/* CTA - Unchanged */}
       <div className="py-14 bg-white">
         <div className="max-w-6xl mx-auto px-6 text-center">
           <h2 className="text-2xl font-bold text-black mb-3">Request a Coaching Session</h2>
@@ -109,7 +117,6 @@ export default function Coaching() {
           </Link>
         </div>
       </div>
-
       
       <Footer />
     </div>
