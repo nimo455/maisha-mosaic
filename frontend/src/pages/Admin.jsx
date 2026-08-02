@@ -124,9 +124,15 @@ export default function Admin() {
       <div className="bg-white border-b border-gray-200">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-blue-700 rounded-md flex items-center justify-center text-white">
-              <LayoutDashboard size={16} strokeWidth={1.5} />
-            </div>
+            <svg width="32" height="30" viewBox="0 0 54 58" fill="none">
+              <g stroke="#284378ff" strokeWidth="1.6" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M16 44 C15 38 13 30 14 20 C15 12 18 8 20 6" />
+                <path d="M14 22 C8 18 4 14 6 8 C8 4 14 4 18 10 C16 14 14 18 14 22Z" />
+                <path d="M15 30 C10 27 7 22 9 17 C11 14 16 15 17 22 C16 25 15 28 15 30Z" />
+                <path d="M17 18 C14 14 13 10 15 7 C17 5 20 7 19 13 C18 15 17 17 17 18Z" />
+              </g>
+              <text x="14" y="52" fontSize="57" fontFamily="'Cormorant Garamond', Georgia, serif" fontWeight="700" fill="#1450c8" letterSpacing="-1">M</text>
+            </svg>
             <div>
               <p className="text-sm font-bold text-gray-900">Maisha Mosaic Foundation</p>
               <p className="text-xs text-gray-400">Admin Dashboard</p>
