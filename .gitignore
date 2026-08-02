@@ -25,3 +25,4 @@ backend/__pycache__/
 backend/instance/
 *.pyc.env
 backend/.env
+.env.save*
