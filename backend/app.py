@@ -324,6 +324,7 @@ def health():
     return jsonify({"status": "ok", "message": "Maisha Mosaic API is running"})
 
 
+
 # ── Chat Sessions Count ────────────────────────────────────────────────────
 @app.route("/api/chat/sessions", methods=["GET"])
 def get_chat_sessions():
@@ -331,7 +332,6 @@ def get_chat_sessions():
     count = conn.execute("SELECT COUNT(*) as c FROM chat_sessions").fetchone()["c"]
     conn.close()
     return jsonify({"count": count})
-
 
 if __name__ == "__main__":
     init_db()
